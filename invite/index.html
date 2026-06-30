@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeartMatch - You've Been Invited! 💖</title>
+    <style>
+        :root {
+            --primary: #FF4F79; /* RosePink */
+            --secondary: #FF6F61; /* OrangeCoral */
+            --bg: #121214;
+            --surface: #1E1E22;
+            --on-surface: #FFFFFF;
+            --text-secondary: #A0A0AB;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--on-surface);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+            padding: 40px 24px;
+            text-align: center;
+            background: var(--surface);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 79, 121, 0.15);
+            margin: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Glowing background decorations */
+        .glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 0;
+            border-radius: 50%;
+        }
+        .glow-top { top: -40px; left: -40px; }
+        .glow-bottom { bottom: -40px; right: -40px; }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 54px;
+            margin-bottom: 24px;
+            display: inline-block;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 0 12px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0 0 32px 0;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 52px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 79, 121, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 79, 121, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .badge {
+            background: rgba(255, 79, 121, 0.1);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .footer {
+            font-size: 11px;
+            color: #60606a;
+            margin-top: 32px;
+            line-height: 1.4;
+        }
+
+        /* Fully responsive support for smaller screen heights & widths */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+                min-height: calc(100vh - 20px);
+            }
+            .container {
+                margin: 10px auto;
+                padding: 24px 16px;
+                border-radius: 20px;
+            }
+            .logo {
+                font-size: 42px;
+                margin-bottom: 14px;
+            }
+            .badge {
+                padding: 4px 10px;
+                font-size: 10px;
+                margin-bottom: 12px;
+            }
+            h1 {
+                font-size: 20px;
+                margin-bottom: 8px;
+            }
+            p {
+                font-size: 13.5px;
+                margin-bottom: 20px;
+                line-height: 1.5;
+            }
+            .btn {
+                height: 46px;
+                font-size: 13.5px;
+                margin-bottom: 10px;
+                border-radius: 12px;
+            }
+            .footer {
+                margin-top: 20px;
+                font-size: 10px;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glow glow-top"></div>
+        <div class="glow glow-bottom"></div>
+        
+        <div class="content">
+            <span class="logo">💖</span>
+            <div id="badge-container" class="badge">MATCH INVITATION</div>
+            
+            <h1>You're Invited to Connect!</h1>
+            <p>Someone has sent you a special invitation to match instantly on <strong>HeartMatch</strong> — the ultimate secure dating & matching network.</p>
+
+            <!-- Primary Action: Open App -->
+            <a id="btn-open-app" href="#" class="btn btn-primary">Open in HeartMatch App 🚀</a>
+            
+            <!-- Secondary Action: Install App -->
+            <a id="btn-install-app" href="#" class="btn btn-secondary">Get App on Play Store 📥</a>
+
+            <div class="footer">
+                If you have HeartMatch installed, clicking "Open in App" will load the invitation automatically.<br>
+                Secured via cryptographic compliance protocols. Must be 18+.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Extract sender UID from query params
+        const urlParams = new URLSearchParams(window.location.search);
+        const sender = urlParams.get('sender') || '';
+
+        // Format custom deep links
+        const nativeAppScheme = `heartmatch://invite?sender=${sender}`;
+        const playStoreUrl = `https://play.google.com/store/apps/details?id=com.aistudio.heartmatch.qzxmwy&referrer=sender%3D${sender}`;
+
+        // Configure buttons
+        document.getElementById('btn-open-app').href = nativeAppScheme;
+        document.getElementById('btn-install-app').href = playStoreUrl;
+
+        // Auto-redirect fallback pattern (opens app if installed, else redirects to Play Store)
+        window.addEventListener('load', () => {
+            if (sender) {
+                document.getElementById('badge-container').innerText = `INVITE FROM: ${sender.substring(0, 8)}...`;
+            }
+
+            // Only auto-redirect on mobile devices
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            if (isMobile) {
+                // Store current timestamp
+                const start = Date.now();
+                
+                // Attempt to open the custom scheme
+                window.location.href = nativeAppScheme;
+
+                // Set a timeout to redirect to Play Store if the app doesn't open
+                setTimeout(() => {
+                    // If the app successfully launched, the browser went to the background, 
+                    // causing the execution of this timeout to be delayed.
+                    // If the elapsed time is less than 2 seconds, it means the browser remained in the foreground
+                    // (the app is not installed), so we redirect to the Play Store.
+                    if (Date.now() - start < 2000) {
+                        window.location.href = playStoreUrl;
+                    }
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
